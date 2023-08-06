@@ -1,1 +1,20 @@
+import os
+def create():
+    def new_txt(location, text):
+        try:
+            with open(location, "w") as file:  # Changed "a" to "w" to write instead of append
+                file.write(text + "\n")
+            print("Text başarıyla eklendi.", location)
+        except FileNotFoundError:
+            print("File Not Found. Please provide a valid file path.")
+    
+    new_file_name = input("Enter the name of the new program: ")
+    path1 = "C:\\Users\\Sezer\\Desktop\\Tours"
+    os.mkdir(os.path.join(path1, new_file_name))
+    path = os.path.join(path1, new_file_name)
 
+    text_content = input("Enter the text content for the new file: ")
+    new_txt(os.path.join(path, new_file_name + ".txt"), text_content)  # Use the same name for file and content
+
+create()
+print("Current working directory:", os.getcwd())
